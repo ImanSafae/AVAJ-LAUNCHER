@@ -32,10 +32,12 @@ public class Simulator {
             if (Files.notExists(filePath)) {
                 throw new FileNotFoundException(filename);
             }
+            SimulationLogger.init();
             initSimulation(filePath);
             for (int i = 0; i< nbOfSimulations; i++) {
                 weatherTower.changeWeather();
             }
+            SimulationLogger.close();
         }
         catch (FileNotFoundException e) {
             System.out.println("Error: File not found - " + e.getMessage());

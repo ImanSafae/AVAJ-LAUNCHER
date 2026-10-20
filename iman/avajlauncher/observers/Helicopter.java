@@ -1,6 +1,7 @@
 package iman.avajlauncher.observers;
 
 import iman.avajlauncher.utils.Coordinates;
+import iman.avajlauncher.utils.SimulationLogger;
 
 public class Helicopter extends Aircraft {
     
@@ -11,20 +12,20 @@ public class Helicopter extends Aircraft {
     public void updateConditions() {
         String weather = this.weatherTower.getWeather(coordinates);
         if (weather.equals("SUN")) {
-            System.out.println(this.toString() + ": HELICOPTER HELICOPTER");
+            SimulationLogger.log(this.toString() + ": HELICOPTER HELICOPTER");
             this.coordinates.setLongitude(this.coordinates.getLongitude() + 10);
             this.coordinates.setHeight(this.coordinates.getHeight() + 2);
         }
         else if (weather.equals("RAIN")) {
-            System.out.println(this.toString() + ": [sad helicopter noises]");
+            SimulationLogger.log(this.toString() + ": [sad helicopter noises]");
             this.coordinates.setLongitude(this.coordinates.getLongitude() + 5);
         }
         else if (weather.equals("FOG")) {
-            System.out.println(this.toString() + ": [confused helicopter noises]");
+            SimulationLogger.log(this.toString() + ": [confused helicopter noises]");
             this.coordinates.setLongitude(this.coordinates.getLongitude() + 1);
         }
         else if (weather.equals("SNOW")) {
-            System.out.println(this.toString() + ": [weird sleigh bells with helix noises]");
+            SimulationLogger.log(this.toString() + ": [weird sleigh bells with helix noises]");
             int newHeight = this.coordinates.getHeight() - 12;
             if (newHeight <= 0) {
                 newHeight = 0;
